@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.040);
+  border-radius: 0.75rem;
+  outline: none;
+  transition: border ease-in 100ms;
+}
+
+input:focus {
+  border: 2px solid rgba(0, 0, 0, 0.216);
+}
+
+button {
+  padding: 0.5rem 1rem;
+}
+
+.bg-main{
+  background-color: #ffff;
+}
+
+.curved-outwards{
+  border-bottom: -100px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+h3 {
+  font-size: 1rem;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+a {
+  cursor: pointer;
+}
+
+/* .main-first {
+  animation: fadeout 10s ease-in infinite alternate;
+} */
+
+/* .main-second {
+  animation: fadeout 10s ease-in 5s infinite alternate;
+} */
+.focus {
+  color: white;
+}
+.focus::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  border-radius: 9999px;;
+}
+.loading{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  background-color: rgb(88, 88, 255);
+  animation: loading 1s ease infinite;
+
+}
+
+.loading-box {
+  background-image: linear-gradient(#d1d5db,#f3f4f6);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  --_c:no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
+  background: 
+    var(--_c) top,
+    var(--_c) left,
+    var(--_c) right,
+    var(--_c) bottom;
+  background-size: 12px 12px;
+  animation: l7 1s infinite;
+}
+@keyframes l7 {to{transform: rotate(.5turn)}}
+
+.onhover {
+  display: none;
+}
+
+.mainHover:hover  .onhover{
+  display: block;
+
+}
+
+.onhover2 {
+  opacity: 0;
+  transition: opacity ease-in 100ms;
+}
+
+.mainHover2:hover  .onhover2{
+  opacity: 1;
+}
+
+@keyframes loadingBox {
+  from {
+    background-position: top;
+  }
+  to {
+    background-position: bottom;
+  }
+}
+
+@keyframes fadeIn{
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(360deg);
+    opacity: 0.5;
+  }
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
