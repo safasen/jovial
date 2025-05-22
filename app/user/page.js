@@ -59,8 +59,8 @@ export default function User(){
                 </div>
             </div>
             
-            {friends == "true" && <FriendsSide userId = {currentUser?.uid} plan={"first"} />}
-            {inbox == "true" && <Inbox userId={currentUser?.uid} />}
+            <motion.div layout transition={{duration:0.2}} key="friends" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: friends=="true"? 0: "-25%"}}><FriendsSide  userId = {currentUser?.uid} plan={plan} users={data?.members} /></motion.div>
+            <motion.div layout transition={{duration:0.2}} key="inbox" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: inbox=="true"? 0: "-25%"}}><Inbox userId={currentUser?.uid} /></motion.div>
             </>
         )
     } else if (plan == "loading" || data == null) {
