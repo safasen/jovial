@@ -2,9 +2,11 @@ import { User } from "lucide-react";
 import UserData from "./userData";
 import { arrayUnion, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import { db } from "@/config/firebase";
+import { useState } from "react";
+import Alerts from "./alerts";
 
 export default function NotificationReq({userId, sentUserId, id}) {
-    
+    const [notify, setNotify] = useState(false)
     const accept = () => {
         const batch = writeBatch(db)
         const userRef = doc(db, "users", userId)
@@ -18,7 +20,10 @@ export default function NotificationReq({userId, sentUserId, id}) {
         const notificationRef = doc(db,"users", userId, "notifications", id)
         batch.delete(notificationRef)
         batch.commit().then(() => {
-            console.log("Friend request accepted")
+            setNotify(true)
+            setTimeout(() => {
+                setNotify(false)
+            }, 2000);
         }).catch((error) => {
             console.error("Error accepting friend request: ", error)
         })
@@ -51,6 +56,7 @@ export default function NotificationReq({userId, sentUserId, id}) {
             </div>
             
         </div>
+        <Alerts message={"Friend request accepted"} visible={notify}/>
         </>
     )
 }

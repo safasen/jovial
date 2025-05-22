@@ -2,8 +2,11 @@ import { User } from "lucide-react";
 import UserData from "./userData";
 import { arrayUnion, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import { db } from "@/config/firebase";
+import { useState } from "react";
+import Alerts from "./alerts";
 
 export default function NotificationInvite({userId, sentUserId, id, projectId}) {
+    const [notify, setNotify] = useState(false)
     const accept = () => {
         const batch = writeBatch(db)
         const planRef = doc(db, "plan", projectId)
@@ -17,7 +20,10 @@ export default function NotificationInvite({userId, sentUserId, id, projectId}) 
         const notifyRef = doc(db, "users", userId, "notifications", id)
         batch.delete(notifyRef)
         batch.commit().then(() => {
-            console.log("Invite accepted")
+            setNotify(true)
+            setTimeout(() => {
+                setNotify(false)
+            }, 2000);
         }).catch(async (error) => {
             window.alert("This project doesn't exist anymore")
             await deleteDoc(doc(db, "users", userId, "notifications", id))
@@ -47,6 +53,7 @@ export default function NotificationInvite({userId, sentUserId, id, projectId}) 
             </div>
             
         </div>
+        <Alerts message={"Invitation accepted"} visible={notify}/>
         </>
     )
 }
