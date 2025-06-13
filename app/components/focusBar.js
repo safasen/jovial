@@ -27,9 +27,9 @@ export default function FocusBar({progress, total,plan,userId}) {
     return (
         <>
         <div>
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-2 lg:gap-0 mb-4">
                 <h2 className="text-3xl">Daily Goal</h2>
-                <h1 className="text-2xl font-bold p-2 rounded-lg text-blue-500 bg-blue-100">{total < 60 ? total + " min" : Math.floor(total/60) + " hr " + total%60 + " min"}</h1>
+                <h1 className="text-2xl font-bold p-2 rounded-lg text-blue-500 w-fit bg-blue-100">{total < 60 ? total + " min" : Math.floor(total/60) + " hr " + total%60 + " min"}</h1>
             </div>
             <div className="relative h-16 rounded-lg bg-gray-400 text-white text-3xl">
                 <h1 className="absolute top-4 left-4 z-10">{hours === 0 ? minutes + " min" : hours + " hr " + minutes + " min" }</h1>

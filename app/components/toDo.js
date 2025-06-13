@@ -47,7 +47,7 @@ export function ToDoBox({plan, userId}){
     return (
         <div className="flex flex-col gap-2">
             <form onSubmit={formSubmit} className="flex items-center border-b-2 border-gray-300 gap-2 my-2">
-                <Plus type="submit" size={30} className="p-2 rounded-t-md hover:bg-gray-100" />
+                <Plus type="submit"  className="p-1 md:w-6 md:h-6 lg:p-2 lg:w-8 lg:h-8 rounded-t-md hover:bg-gray-100" />
                 <input type="text" placeholder="Add a task..." className="border-0 focus:border-0 rounded-lg p-0 text-sm font-semibold" />
             </form>
             <AnimatePresence initial={false}>

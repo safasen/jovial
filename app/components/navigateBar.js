@@ -7,13 +7,15 @@ import { arrayRemove, doc, getDoc, onSnapshot, runTransaction, writeBatch } from
 import {  useSearchParams ,useRouter, usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import ProjectName from "./projectName";
-import { ChartBarStacked, FileBadge2, Focus, Inbox, LayoutList, Notebook, PanelsTopLeft, Plus, Settings2, Users, Wind } from "lucide-react";
+import { ChartBarStacked, ChevronsLeft, FileBadge2, Focus, Inbox, LayoutList, Menu, Notebook, PanelsTopLeft, Plus, Settings2, Users, Wind } from "lucide-react";
 import AddProject from "./addProject";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { useSidebar } from "@/context/minimized";
 
 export default function NavigateBar() {
     const user = useAuth() || null
+    const {minimized, setMinimized} = useSidebar()
     const searchParams = useSearchParams()
     const path = usePathname()
     const plan = searchParams.get("project") || null
@@ -81,10 +83,11 @@ export default function NavigateBar() {
 
     }
     return (
-        <>
-        <div className="fixed left-0 w-1/5 h-screen bg-white z-50 shadow-md p-4">
-            <motion.div initial={{opacity:0}} animate={{opacity:1}} className="mx-4 h-full max-w-5xl flex flex-col gap-4">
-                <div className="text-2xl font-bold text-blue-700 flex items-center gap-2"><img src="/logo.png" alt="logo" className="w-12 h-12" />Jo.</div>
+        <>       
+        <div className={`fixed left-0 ${minimized ? "w-10 p-0 bg-gray-100 shadow-none" : "xl:w-1/5 w-72 p-2 bg-white shadow-md"} h-screen z-50 shadow-md transition-all duration-200`}>
+            {minimized && <Menu onClick={()=> setMinimized(!minimized)} className="w-10 h-10 p-2 text-gray-500  rounded-r-lg cursor-pointer" />}
+            {!minimized && <motion.div initial={{opacity:0}} animate={{opacity:1}} className="mx-4 h-full max-w-5xl flex flex-col gap-4">
+                <div className="flex items-center justify-between"><div className="text-2xl font-bold text-blue-700 flex items-center gap-2"><img src="/logo.png" alt="logo" className="w-12 h-12" />Jo.</div><ChevronsLeft className="text-gray-500 hover:bg-gray-100 p-1 rounded-md cursor-pointer" onClick={()=> setMinimized(!minimized)} size={30} /> </div>
                 <div className="flex justify-between items-center gap-4 mb-2 ">
                     {user ? <div className="text-xl font-bold"><span className="text-slate-400">Hello, </span>{user?.displayName}</div>: <div className="text-xl font-bold">Loading</div>}
                     <button className="bg-blue-500 text-white rounded-lg" onClick={logOut} >Sign Out</button>
@@ -110,7 +113,7 @@ export default function NavigateBar() {
                         )
                     })}
                 </div>}
-            </motion.div>
+            </motion.div>}
         </div>
         <AnimatePresence initial={false}>
         {addProject && <motion.div exit={{opacity:0}} className="fixed w-screen h-screen top-0 left-0 z-50">
