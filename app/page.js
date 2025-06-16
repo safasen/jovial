@@ -82,7 +82,7 @@ export default function Home() {
             </Link>
             <div className="pt-6 flex flex-col items-center space-y-4">
               <Link 
-              href="/sign-In"  
+              href="/signIn"  
               className="px-6 py-2 text-base font-medium text-blue-700 hover:text-blue-900 hover:bg-blue-100 rounded-md transition-colors">
                 Sign In
               </Link>
