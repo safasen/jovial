@@ -118,7 +118,7 @@ export default function NavigateBar() {
         <AnimatePresence initial={false}>
         {addProject && <motion.div exit={{opacity:0}} className="fixed w-screen h-screen top-0 left-0 z-50">
                 <div className="flex w-full h-full justify-center items-center">
-                    <motion.div initial={{opacity:0}} animate={{opacity:1}} className="relative bg-white py-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3">
+                    <motion.div initial={{opacity:0}} animate={{opacity:1}} className="relative bg-white py-4 rounded-lg shadow-lg h-fit flex z-10 flex-col overflow-x-auto gap-4 min-w-60 w-1/3">
                         <AddProject userId={user?.uid} />           
                     </motion.div>
                 </div>

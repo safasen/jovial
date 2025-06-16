@@ -30,8 +30,8 @@ export default function TaskData({plan, userId}) {
         <>
         <div className="bg-white p-4 rounded-lg">
             <h1 className="text-2xl font-semibold mb-4">Task Data</h1>
-            {data ? <div className="font-semibold text-3xl grid grid-cols-3 gap-2">
-                <div className="grid grid-cols-2 gap-2 col-span-2">
+            {data ? <div className="font-semibold text-3xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 overflow-x-auto gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 col-span-2">
                     <div className="p-4 space-y-4 rounded-lg bg-gray-100">
                         <div className="flex gap-2 justify-between items-center">
                             <p className="text-xl">Tasks Given</p>
@@ -61,7 +61,7 @@ export default function TaskData({plan, userId}) {
                         <p className="text-4xl">{Math.round((data.completed/data.totalGiven)*100)}%</p>
                     </div>
                 </div>
-                <div className="p-4 flex flex-col justify-between space-y-4 rounded-lg bg-gray-100">
+                <div className="p-4 flex flex-col justify-between space-y-4 col-span-2 lg:col-auto rounded-lg bg-gray-100">
                     <div className="flex gap-2 justify-between items-center">
                         <p className="text-xl">Total Tasks completed</p>
                         <CopyCheck size={36} color="red" />

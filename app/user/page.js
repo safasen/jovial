@@ -56,13 +56,13 @@ export default function User(){
             <>
             <div className="grid grid-cols-5 bg-yellow-50">
                 <div></div>
-                <div className="col-span-4 flex justify-center items-center h-screen">
-                    <h1 className="text-5xl font-semibold">Start by making your first plan</h1>
+                <div className={`${!minimized ? "col-span-5 ml-2 xl:col-span-4" : "col-span-5 xl:ml-12 ml-2" } flex justify-center items-center h-screen`}>
+                    <h1 className="text-4xl sm:text-5xl font-semibold">Start by making your first plan</h1>
                 </div>
             </div>
             
-            <motion.div layout transition={{duration:0.2}} key="friends" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: friends=="true"? 0: "-25%"}}><FriendsSide  userId = {currentUser?.uid} plan={plan} users={data?.members} /></motion.div>
-            <motion.div layout transition={{duration:0.2}} key="inbox" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: inbox=="true"? 0: "-25%"}}><Inbox userId={currentUser?.uid} /></motion.div>
+            <motion.div layout transition={{duration:0.2}} key="friends" className={`fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4 ${friends === "true" ? "right-0" : "-right-80 md:-right-1/2 xl:-right-1/3"}`}><FriendsSide  userId = {currentUser?.uid} plan={plan} users={data?.members} /></motion.div>
+            <motion.div layout transition={{duration:0.2}} key="inbox" className={`fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4 ${inbox === "true" ? "right-0" : "-right-80 md:-right-1/2 xl:-right-1/3"}`}><Inbox userId={currentUser?.uid} /></motion.div>
             </>
         )
     } else if (plan == "loading" || data == null) {
@@ -86,8 +86,8 @@ export default function User(){
                 {curr == "focus" && <FocusPeriod planId={plan} userId={currentUser?.uid} />}
             </motion.div>
         </div>
-        <motion.div layout transition={{duration:0.2}} key="friends" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: friends=="true"? 0: "-25%"}}><FriendsSide  userId = {currentUser?.uid} plan={plan} users={data?.members} /></motion.div>
-        <motion.div layout transition={{duration:0.2}} key="inbox" className="fixed top-0 h-full w-1/4 bg-white shadow-lg z-50 p-4" style={{right: inbox=="true"? 0: "-25%"}}><Inbox userId={currentUser?.uid} /></motion.div>
+        <motion.div layout transition={{duration:0.2}} key="friends" className={`fixed top-0 h-full w-72 md:w-1/3 xl:w-1/4 min-w-48 bg-white shadow-lg z-50 p-4 ${friends === "true" ? "right-0" : "-right-80 md:-right-1/2 xl:-right-1/3"}`}><FriendsSide  userId = {currentUser?.uid} plan={plan} users={data?.members} /></motion.div>
+        <motion.div layout transition={{duration:0.2}} key="inbox" className={`fixed top-0 h-full w-72 md:w-1/3 xl:w-1/4 min-w-48 bg-white shadow-lg z-50 p-4 ${inbox === "true" ? "right-0" : "-right-80 md:-right-1/2 xl:-right-1/3"}`}><Inbox userId={currentUser?.uid} /></motion.div>
         
         </>
         

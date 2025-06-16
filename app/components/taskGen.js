@@ -46,7 +46,7 @@ export default function TaskGen({tasks=[], userId, plan}) {
     return (
         <>
         <div>
-            <div className="border-b-2 border-gray-300 flex items-center gap-4 text-gray-500 font-semibold my-2">
+            <div className="border-b-2 border-gray-300 flex items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-500 font-semibold my-2">
                 <div style={{color: assigned && "black",borderColor: assigned && "#9ca3af"}} className="p-2 border-b-2 border-white hover:border-gray-400 transition-colors ease-in cursor-pointer" onClick={()=> {setAssigned(true); setGiven(false); setPrivate(false)}}>Assigned</div>
                 <div style={{color: given && "black",borderColor: given && "#9ca3af"}} className="p-2 border-b-2 border-white hover:border-gray-400 transition-colors ease-in cursor-pointer" onClick={()=> {setAssigned(false); setGiven(true); setPrivate(false)}}>Given</div>
                 <div style={{color: privates && "black",borderColor: privates && "#9ca3af"}} className="p-2 border-b-2 border-white hover:border-gray-400 transition-colors ease-in cursor-pointer" onClick={()=> {setAssigned(false); setGiven(false); setPrivate(true)}}>Private</div>
@@ -71,7 +71,7 @@ export default function TaskGen({tasks=[], userId, plan}) {
             
         </div>
         <AnimatePresence initial={false}>
-        {side && <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} key="sideTask" className="fixed top-0 right-0 w-1/4 h-screen bg-white z-50">
+        {side && <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} key="sideTask" className="fixed top-0 right-0 w-1/4 min-w-60 h-screen bg-white z-50">
             <div className="h-full p-4">
                 <div className="flex justify-between items-start">
                     <h1 className="text-3xl font-bold">Task Details</h1>

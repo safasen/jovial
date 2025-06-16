@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import TaskData from "./taskData";
 import { motion } from "framer-motion";
 import dateGen from "./dateGen";
+import { useSidebar } from "@/context/minimized";
 
 export default function Analytics({userId, plan, dailyTime}) {
     const [data, setdata] = useState(null)
+    const {minimized, setMinimized} = useSidebar()
     useEffect(()=> {
         async function fetchData(){
             await getDocs(query(collection(db, "plan", plan, "focusPeriod"),where("user","==", userId))).then((docs)=> {
@@ -73,15 +75,15 @@ export default function Analytics({userId, plan, dailyTime}) {
     // }
     return (
         <>
-        <div className="h-full">
+        <div className="h-full ">
             <h1 className="text-5xl">Analytics</h1>
-            <div className="h-1/2 mt-4 rounded-lg bg-white p-4 flex flex-col gap-4">
+            <div className="h-1/2 mt-4 rounded-lg  bg-white  p-4 flex flex-col gap-4">
                 <h2 className="font-bold">{"Stats(Last 12 days)"}</h2>
-                <div className="flex gap-8 rounded-lg h-3/4 items-end justify-center px-4">
+                <div className="flex gap-8 rounded-lg h-3/4 items-end overflow-x-auto lg:justify-center scrollbar-hide px-4">
                     {data && (data.length >0 ? data.map((k,i) => {
                         return (<motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay: 0.05*i}} className="h-full flex flex-col justify-end mainHover2" key={i}>
                             <p className="font-semibold text-center onhover2">{k.time}</p>
-                            <div className="rounded-t-lg lg:w-10 md:w-8 xl:w-12 2xl:w-14" style={{height: `${Math.floor(((k.time+2)/200)*100)}%`, backgroundColor: k.time>=dailyTime ? "#2563eb" : "black" }}></div>
+                            <div className={`rounded-t-lg lg:w-10 ${minimized ? "xl:w-10 2xl:w-14" : "xl:w-12 2xl:w-18"}`} style={{height: `${Math.floor(((k.time+2)/200)*100)}%`, backgroundColor: k.time>=dailyTime ? "#2563eb" : "black" }}></div>
                             <p className="text-center font-medium">{k.date.slice(2,4)+ "/" + k.date.slice(0,2)}</p>
                         </motion.div>)
                     }): <div className="text-center">No data for the past 12 days</div>)}

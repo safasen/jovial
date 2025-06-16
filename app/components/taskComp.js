@@ -6,7 +6,7 @@ export default function TaskComp({tasks}) {
     const d = new Date()
     return (
         <>
-        <div className="grid grid-cols-3 gap-4 mt-8">
+        <div className="grid grid-cols-3 gap-4 min-w-[940px] mt-8">
             <div className="p-2 bg-red-100 rounded-lg shadow-md">
                 <h2 className="font-bold text-center">Overdue</h2>
             </div>

@@ -75,9 +75,9 @@ export default function Rankings({plan,userId, member}) {
                     <h2 className="text-2xl font-semibold">Daily Rankings</h2>
                     <p className="text-sm font-light p-1 cursor-pointer hover:bg-gray-200" onClick={()=> setDailyView(true)}>View all {">"}</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4 mt-2">
+                <div className="lg:grid lg:grid-cols-3 flex gap-4 mt-2 overflow-x-auto scrollbar-hide">
                     {daily.length > 0 ? daily.sort((a,b)=> b.time - a.time).slice(0,3).map((k,i) => {
-                        return <div key={i} className="rounded-xl bg-white p-4">
+                        return <div key={i} className="rounded-xl w-full min-w-72 bg-white p-4">
                         <div className="border-b-2 border-gray-300 pb-4">
                             <h3 className="p-2 font-semibold rounded-lg w-fit"style={{color: color(i)[0], backgroundColor: color(i)[1]}}>#{i+1}</h3>
                         </div>
@@ -99,9 +99,9 @@ export default function Rankings({plan,userId, member}) {
                     <h2 className="text-2xl font-semibold">Total Rankings</h2>
                     <p className="text-sm font-light p-1 cursor-pointer hover:bg-gray-200" onClick={()=> setTotalView(true)}>View all {">"}</p>
                 </div>
-                <div className="grid grid-cols-3 gap-4 mt-2">
+                <div className="lg:grid lg:grid-cols-3 flex gap-4 mt-2 overflow-x-auto scrollbar-hide">
                     {rankings.length > 0 ? rankings.sort((a,b)=> b.time - a.time).slice(0,3).map((k,i) => {
-                        return <div key={i} className="rounded-xl bg-white p-4">
+                        return <div key={i} className="rounded-xl w-full min-w-72 bg-white p-4">
                         <div className="border-b-2 border-gray-300 pb-4">
                             <h3 className="p-2 font-semibold rounded-lg w-fit"style={{color: color(i)[0], backgroundColor: color(i)[1]}}>#{i+1}</h3>
                         </div>
@@ -123,7 +123,7 @@ export default function Rankings({plan,userId, member}) {
         <AnimatePresence initial={false}>
         {dailyview && (<motion.div exit={{opacity:0}} key="dailyview" className="fixed w-screen h-screen top-0 left-0 z-50">
                     <div className="flex w-full h-full justify-center items-center">
-                        <motion.div initial={{opacity:0, scale:0.75}} animate={{opacity:1, scale:1}} className="relative bg-white p-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3">                          
+                        <motion.div initial={{opacity:0, scale:0.75}} animate={{opacity:1, scale:1}} className="relative bg-white p-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3 min-w-72">                          
                             {daily.sort((a,b) => b.time - a.time).map((k,i) => {
                                 return <div key = {k.userId} className="flex justify-between items-center p-2 border-b-2 border-gray-200 text-lg font-semibold" style={{color: i+1==1 ? "#d97706" : "black"}}>
                                 <div className="flex items-center gap-2 ">
@@ -138,7 +138,7 @@ export default function Rankings({plan,userId, member}) {
         </motion.div>)}
         {totalview && (<motion.div  exit={{opacity:0}} key="totalview" className="fixed w-screen h-screen top-0 left-0 z-50">
                     <div className="flex w-full h-full justify-center items-center">
-                        <motion.div initial={{opacity:0, scale:0.75}} animate={{opacity:1, scale:1}} className="relative bg-white p-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3">                          
+                        <motion.div initial={{opacity:0, scale:0.75}} animate={{opacity:1, scale:1}} className="relative bg-white p-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3 min-w-72">                          
                             {rankings.sort((a,b) => b.time - a.time).map((k,i) => {
                                 return <div key = {k.userId} className="flex justify-between items-center p-2 border-b-2 border-gray-200 text-lg font-semibold" style={{color: i+1==1 ? "#d97706" : "black"}}>
                                 <div className="flex items-center gap-2 ">

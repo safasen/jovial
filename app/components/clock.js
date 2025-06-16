@@ -68,7 +68,7 @@ export default function Clock({planId, userId}) {
         return `${hours}:${minutes}:${seconds}`
     }
     return (
-        <div className="flex flex-col gap-4 p-8 bg-white rounded-lg items-center shadow-lg w-1/3">
+        <div className="flex flex-col gap-4 p-8 bg-white rounded-lg items-center shadow-lg w-1/3 min-w-72">
             <h1 className="mb-8">Clock</h1>
             <div className="text-5xl font-bold font-mono">{formatTime()}</div>
             <div className="flex gap-2 mt-4">
@@ -78,7 +78,7 @@ export default function Clock({planId, userId}) {
             </div>
             <div className="fixed w-screen h-screen top-0 left-0 z-50" style={{ display: confirmed ? "block" : "none" }}>
                 <div className="flex w-full h-full justify-center items-center text-center">
-                    <div className="relative bg-white p-4 rounded-lg shadow-lg flex z-10 flex-col items-center gap-4 max-w-lg">
+                    <div className="relative bg-white p-4 rounded-lg shadow-lg flex z-10 flex-col items-center gap-4 max-w-sm md:max-w-lg">
                         <h1 className="text-xl font-bold">Are you sure you want to reset the timer? Your progress will be lost</h1>
                         <div className="flex gap-2">
                             <div onClick={() => { setConfirmed(false); reset() }} className="px-2 py-1 text-sm font-medium text-red-600 rounded-lg bg-red-200 w-fit cursor-pointer">Yes</div>

@@ -79,13 +79,13 @@ export default function Overview({dailyTime, plan, userId, users}) {
         <>
         <motion.div initial={{opacity:0}} animate={{opacity:1}}>
             <div className="flex justify-between items-center">
-                <h1 className="text-5xl">Overview</h1>
+                <h1 className="text-4xl sm:text-5xl">Overview</h1>
                 <div className="block md:hidden text-gray-500 space-x-4">
                     <ListTodo size={40} onClick={()=> {setOpenToDo(!openToDo)}} className="bg-gray-200 p-2 rounded-lg inline-block mr-2"  />
                 </div>
             </div>
             <div className="grid grid-cols-5 gap-4 mt-8">
-                <div className="p-4 bg-white col-span-5 md:col-span-3 rounded-xl shadow-sm">
+                <div className="p-4 bg-white col-span-5 md:col-span-3 rounded-xl min-w-80 shadow-sm">
                     <div className="flex justify-between items-center">
                         <h1>Tasks</h1>
                         <p className="p-1 bg-gray-200 rounded-md hover:bg-gray-300 transition-colors ease-in cursor-pointer font-semibold flex items-center gap-2" onClick={() => {setOpenTask(true)}} ><Plus size={20} />Add Task</p>
@@ -119,7 +119,7 @@ export default function Overview({dailyTime, plan, userId, users}) {
         </motion.div>}
         {openTask && (<motion.div exit={{opacity:0}} key="addTask" className="fixed w-screen h-screen top-0 left-0 z-50">
                     <div className="flex w-full h-full justify-center items-center">
-                        <div className="relative bg-white py-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 w-1/3">
+                        <div className="relative bg-white py-4 rounded-lg shadow-lg h-fit flex z-10 flex-col gap-4 min-w-60 overflow-x-auto w-1/3">
                             <AddTask plan={plan} userId={userId} users={users} />               
                         </div>
                     </div>

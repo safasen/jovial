@@ -56,8 +56,10 @@ export default function SignIn(){
     }
     return (
         <>
-        <div className="bg-white h-screen grid grid-cols-2">
-            <img src="/Work time.svg" alt="logo" className="m-10 bg-gray-100 rounded-lg" />
+        <div className="bg-white h-screen grid grid-cols-1 lg:grid-cols-2">
+            <div className="w-full h-full hidden lg:block">
+                <img src="/Work time.svg" alt="logo" className=" bg-gray-100 w-full h-full  object-cover" />
+            </div>
             <motion.div initial={{opacity: 0}} animate={{opacity:1}} transition={{duration:0.2}} className="flex flex-col justify-center items-center gap-2 bg-white">
                 <a href="/"><div className="text-blue-700 font-bold text-3xl mb-8">Jo.</div></a>
                 <form onSubmit={handleSubmit} className=" flex flex-col justify-center gap-4">

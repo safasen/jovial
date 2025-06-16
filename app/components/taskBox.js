@@ -29,7 +29,7 @@ export default function TaskBox({keys,forView=false, name,desc,priority,deadline
                     <User className="bg-gray-200 rounded-full p-1" size={20} />
                     <span className="text-gray-500 ml-2">{givenTo == "floater" ? "Floater" : <UserData id={givenTo} />}</span>
                     </div>)}
-                    {isCompleted && <p className={`px-2 py-1 text-sm font-medium  rounded-lg text-green-600 bg-green-200 w-fit`}>Completed</p>}                 
+                    {isCompleted && <p className={`px-2 py-1 text-sm font-medium  rounded-lg text-green-600 bg-green-200 h-fit w-fit`}>Completed</p>}                 
                 </div>
                 <p className="text-sm">{desc}</p>
             </div>            
